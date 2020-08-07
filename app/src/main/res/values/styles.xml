@@ -6,10 +6,11 @@
         <item name="colorPrimaryVariant">@color/brandOrangeDark</item>
         <item name="colorOnPrimary">@color/brandWhite</item>
         <item name="android:statusBarColor">@color/brandOrangeDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
         <item name="textAppearanceHeadline3">@style/TextAppearance.AppTheme.Headline3</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.AppTheme.Headline5</item>
         <item name="textAppearanceHeadline6">@style/TextAppearance.AppTheme.Headline6</item>
         <item name="materialButtonStyle">@style/Widget.AppTheme.Button</item>
+        <item name="textInputStyle">@style/Widget.AppTheme.TextInputLayout.OutlinedBox</item>
     </style>
 
     <style name="TextAppearance.AppTheme.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
@@ -21,25 +22,35 @@
         <item name="android:textColor">@color/brandBlack</item>
     </style>
 
+    <style name="TextAppearance.AppTheme.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textSize">18sp</item>
+        <item name="fontFamily">@font/montserrat_bold</item>
+    </style>
+
     <style name="TextAppearance.AppTheme.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
-        <item name="android:textSize">17sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="fontFamily">@font/montserrat</item>
     </style>
 
     <style name="ShapeAppearance.AppTheme.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
-        <item name="cornerSize">8dp</item>
+        <item name="cornerSize">4dp</item>
         <item name="cornerFamily">rounded</item>
     </style>
 
     <style name="Widget.AppTheme.Button" parent="Widget.MaterialComponents.Button">
         <item name="shapeAppearanceOverlay">@style/ShapeAppearance.AppTheme.MediumComponent</item>
-        <item name="iconGravity">end</item>
         <item name="android:padding">14dp</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="Widget.AppTheme.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="hintTextAppearance">@style/TextAppearance.AppTheme.Caption</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.MaterialComponents.SmallComponent</item>
+        <item name="materialThemeOverlay">
+            @style/ThemeOverlay.AppTheme.TextInputEditText.OutlinedBox
+        </item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.AppTheme.MediumComponent</item>
     </style>
 
     <style name="TextAppearance.AppTheme.Caption" parent="TextAppearance.MaterialComponents.Caption">
@@ -48,4 +59,13 @@
         <item name="textAllCaps">true</item>
         <item name="fontFamily">roboto</item>
     </style>
+
+    <style name="ThemeOverlay.AppTheme.TextInputEditText.OutlinedBox" parent="ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="editTextStyle">@style/Widget.AppTheme.TextInputEditText.OutlinedBox</item>
+    </style>
+
+    <style name="Widget.AppTheme.TextInputEditText.OutlinedBox" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="android:paddingStart">16dp</item>
+    </style>
+
 </resources>

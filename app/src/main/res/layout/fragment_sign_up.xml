@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUpFragment">
+
+
+    <TextView
+        android:id="@+id/tvRegHeading"
+        style="?textAppearanceHeadline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="@string/sign_up"
+        app:layout_constraintBottom_toTopOf="@+id/tvRegMsg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.16000003"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tvRegMsg"
+        style="?textAppearanceHeadline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_up_to_start"
+        app:layout_constraintBottom_toTopOf="@+id/tlRegName"
+        app:layout_constraintStart_toStartOf="@+id/tvRegHeading"
+        app:layout_constraintTop_toBottomOf="@+id/tvRegHeading" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tlRegName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/hint_name"
+        app:layout_constraintBottom_toTopOf="@+id/tlRegEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRegMsg">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRegName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tlRegEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:hint="@string/hint_email"
+        app:layout_constraintBottom_toTopOf="@+id/tlRegMobileNo"
+        app:layout_constraintEnd_toEndOf="@+id/tlRegName"
+        app:layout_constraintStart_toStartOf="@+id/tlRegName"
+        app:layout_constraintTop_toBottomOf="@+id/tlRegName">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRegEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tlRegMobileNo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:hint="@string/hint_mobile_number"
+        app:layout_constraintBottom_toTopOf="@+id/tlRegAddress"
+        app:layout_constraintEnd_toEndOf="@+id/tlRegEmail"
+        app:layout_constraintStart_toStartOf="@+id/tlRegEmail"
+        app:layout_constraintTop_toBottomOf="@+id/tlRegEmail">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRegMobileNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tlRegAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:hint="@string/hint_address"
+        app:layout_constraintBottom_toTopOf="@+id/tlRegPassword"
+        app:layout_constraintEnd_toEndOf="@+id/tlRegMobileNo"
+        app:layout_constraintStart_toStartOf="@+id/tlRegMobileNo"
+        app:layout_constraintTop_toBottomOf="@+id/tlRegMobileNo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRegAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tlRegPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:hint="@string/hint_password"
+        app:endIconMode="password_toggle"
+        app:layout_constraintBottom_toTopOf="@+id/tlRegCnfPassword"
+        app:layout_constraintEnd_toEndOf="@+id/tlRegAddress"
+        app:layout_constraintStart_toStartOf="@+id/tlRegAddress"
+        app:layout_constraintTop_toBottomOf="@+id/tlRegAddress">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRegPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tlRegCnfPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:hint="@string/hint_confirm_password"
+        app:endIconMode="password_toggle"
+        app:layout_constraintBottom_toTopOf="@+id/btnReg"
+        app:layout_constraintEnd_toEndOf="@+id/tlRegPassword"
+        app:layout_constraintStart_toStartOf="@+id/tlRegPassword"
+        app:layout_constraintTop_toBottomOf="@+id/tlRegPassword">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRegCnfPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnReg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/sign_up"
+        app:layout_constraintBottom_toTopOf="@+id/signMsg"
+        app:layout_constraintEnd_toEndOf="@+id/tlRegCnfPassword"
+        app:layout_constraintStart_toStartOf="@+id/tlRegCnfPassword"
+        app:layout_constraintTop_toBottomOf="@+id/tlRegCnfPassword" />
+
+    <TextView
+        android:id="@+id/signMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/already_registered"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvMoveToSignIn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/btnReg"
+        app:layout_constraintTop_toBottomOf="@+id/btnReg" />
+
+    <TextView
+        android:id="@+id/tvMoveToSignIn"
+        style="?attr/textAppearanceHeadline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text="@string/sign_in"
+        app:layout_constraintBaseline_toBaselineOf="@+id/signMsg"
+        app:layout_constraintEnd_toEndOf="@+id/btnReg"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/signMsg" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
