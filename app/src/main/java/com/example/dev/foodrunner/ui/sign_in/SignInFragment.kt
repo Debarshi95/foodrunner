@@ -1,10 +1,11 @@
-package com.example.dev.foodrunner
+package com.example.dev.foodrunner.ui.sign_in
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.dev.foodrunner.R
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

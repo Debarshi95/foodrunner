@@ -8,12 +8,12 @@
 
     <fragment
         android:id="@+id/SignInFragment"
-        android:name="com.example.dev.foodrunner.SignInFragment"
+        android:name="com.example.dev.foodrunner.ui.sign_in.SignInFragment"
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in" />
     <fragment
         android:id="@+id/SignUpFragment"
-        android:name="com.example.dev.foodrunner.SignUpFragment"
+        android:name="com.example.dev.foodrunner.ui.sign_up.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" />
 </navigation>
