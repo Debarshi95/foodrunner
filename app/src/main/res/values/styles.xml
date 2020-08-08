@@ -12,6 +12,10 @@
         <item name="materialButtonStyle">@style/Widget.AppTheme.Button</item>
         <item name="textInputStyle">@style/Widget.AppTheme.TextInputLayout.OutlinedBox</item>
     </style>
+    
+    <style name="AppTheme.Splash" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
 
     <style name="TextAppearance.AppTheme.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
         <item name="fontFamily">@font/montserrat_bold</item>
@@ -34,7 +38,8 @@
     </style>
 
     <style name="ShapeAppearance.AppTheme.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
-        <item name="cornerSize">4dp</item>
+        <item name="cornerSizeBottomLeft">20dp</item>
+        <item name="cornerSizeTopRight">20dp</item>
         <item name="cornerFamily">rounded</item>
     </style>
 
