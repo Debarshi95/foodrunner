@@ -1,11 +1,16 @@
 package com.example.dev.foodrunner.ui.sign_in
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
+import androidx.navigation.*
 import com.example.dev.foodrunner.R
+import com.example.dev.foodrunner.databinding.FragmentSignInBinding
+import com.example.dev.foodrunner.ui.MainActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +26,11 @@ class SignInFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var binding: FragmentSignInBinding
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (context as MainActivity).get().inject(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +45,8 @@ class SignInFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_in, container, false)
+        binding = FragmentSignInBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     companion object {
@@ -56,5 +67,16 @@ class SignInFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.tvMoveToSignUp.setOnClickListener {
+            it.findNavController().apply {
+                popBackStack(R.id.signInFragment, true)
+                navigate(R.id.signUpFragment)
+            }
+        }
     }
 }
