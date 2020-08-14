@@ -2,6 +2,7 @@ package com.example.dev.foodrunner.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.dev.foodrunner.FoodRunnerApplication
 import com.example.dev.foodrunner.R
 import com.example.dev.foodrunner.di.activity_scope.ActivityComponent
@@ -12,6 +13,7 @@ typealias ActivityComponentProvider = Provider<ActivityComponent>
 
 class MainActivity : AppCompatActivity(), ActivityComponentProvider {
     private lateinit var activityComponent: ActivityComponent
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
@@ -25,4 +27,6 @@ class MainActivity : AppCompatActivity(), ActivityComponentProvider {
     override fun get(): ActivityComponent {
         return activityComponent
     }
+
+
 }

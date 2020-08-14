@@ -26,10 +26,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    externalNativeBuild {
+        ndkBuild {
+            path 'src/main/jni/Android.mk'
+        }
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+    ndkVersion '21.0.6113669'
 }
 
 dependencies {
@@ -55,7 +64,7 @@ dependencies {
     //Gson
     implementation "com.squareup.retrofit2:converter-gson:$gson_version"
     //Logging interceptor
-    "com.squareup.okhttp3:logging-interceptor:$logging_interceptor"
+    implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor"
     //Dagger 2
     api "com.google.dagger:dagger:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"

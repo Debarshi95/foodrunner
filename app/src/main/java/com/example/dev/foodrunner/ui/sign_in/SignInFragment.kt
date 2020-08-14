@@ -73,10 +73,8 @@ class SignInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.tvMoveToSignUp.setOnClickListener {
-            it.findNavController().apply {
-                popBackStack(R.id.signInFragment, true)
-                navigate(R.id.signUpFragment)
-            }
+            it.findNavController().navigate(R.id.signUpFragment)
+
         }
     }
 }
