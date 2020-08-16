@@ -6,8 +6,9 @@ import com.example.dev.foodrunner.ui.sign_up.SignUpFragment
 import dagger.Component
 
 @ActivityScope
-@Component(dependencies = [AppComponent::class])
+@Component(modules = [ViewModelFactoryModule::class,ViewModelModule::class],dependencies = [AppComponent::class])
 interface ActivityComponent {
     fun inject(signInFragment: SignInFragment)
     fun inject(signUpFragment: SignUpFragment)
+
 }

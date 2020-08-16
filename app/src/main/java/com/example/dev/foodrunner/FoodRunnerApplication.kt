@@ -12,7 +12,7 @@ class FoodRunnerApplication : Application() {
     private lateinit var appComponent: AppComponent
     override fun onCreate() {
         super.onCreate()
-        appComponent = DaggerAppComponent.builder().appModule(AppModule()).build()
+        appComponent = DaggerAppComponent.create()
     }
 
 

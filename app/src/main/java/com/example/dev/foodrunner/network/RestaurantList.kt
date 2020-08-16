@@ -1,4 +1,4 @@
-package com.example.dev.foodrunner.model.network
+package com.example.dev.foodrunner.network
 
 import com.google.gson.annotations.SerializedName
 
