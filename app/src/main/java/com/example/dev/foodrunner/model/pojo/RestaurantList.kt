@@ -1,5 +1,6 @@
-package com.example.dev.foodrunner.network
+package com.example.dev.foodrunner.model.pojo
 
+import com.example.dev.foodrunner.model.pojo.Restaurant
 import com.google.gson.annotations.SerializedName
 
 data class RestaurantList(
