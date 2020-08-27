@@ -5,13 +5,10 @@ import android.util.Log
 import com.example.dev.foodrunner.model.ResponseState
 import com.example.dev.foodrunner.model.ResponseState.Success
 import com.example.dev.foodrunner.model.network.FoodRunnerService
-import com.example.dev.foodrunner.model.pojo.BaseResponse
-import com.example.dev.foodrunner.model.pojo.Data
 import com.example.dev.foodrunner.model.pojo.User
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import retrofit2.Response
 import kotlin.Exception
 
 class RemoteRemoteDataSourceImpl(
@@ -20,12 +17,13 @@ class RemoteRemoteDataSourceImpl(
 ) : RemoteDataSource {
 
 
-    override suspend fun userSignIn(user: User): ResponseState<BaseResponse<User>> =
-        withContext(ioDispatcher) {
+    override suspend fun userSignIn(user: User): ResponseState<User> {
+        return withContext(ioDispatcher) {
             try {
                 val res = foodRunnerService.userSignIn(user)
-                if (res.isSuccessful && res.body() != null) {
-                    return@withContext Success(res.body()!!)
+                Log.i("RemoteRepo","${res}")
+                if (res.isSuccessful && res.body()!!.baseData.success) {
+                    return@withContext Success(res.body()!!.baseData.data)
                 } else if (!res.isSuccessful) {
                     return@withContext ResponseState.Error(Exception(res.message()))
                 } else {
@@ -36,6 +34,7 @@ class RemoteRemoteDataSourceImpl(
             }
 
         }
+    }
 
 
 }
