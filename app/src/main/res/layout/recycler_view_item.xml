@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="restaurant"
+            type="com.example.dev.foodrunner.model.pojo.Restaurant" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="290dp"
+        android:layout_margin="16dp"
+        android:elevation="4dp"
+        android:padding="20dp"
+        app:cardCornerRadius="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/imgRes"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                app:imageLoading="@{restaurant.imgUrl}"
+                app:layout_constraintBottom_toTopOf="@+id/tvResTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:srcCompat="@drawable/ic_launcher_background" />
+
+            <TextView
+                android:id="@+id/tvResTitle"
+                style="?attr/textAppearanceHeadline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="18dp"
+                android:text="@{restaurant.name}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgRes"
+                tools:text="Pind Tadka" />
+
+            <TextView
+                android:id="@+id/tvRupeeSymbol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Rs"
+                android:textSize="28sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvResTitle"
+                app:layout_constraintTop_toBottomOf="@+id/imgRes"
+                app:layout_constraintVertical_bias="0.69" />
+
+            <TextView
+                android:id="@+id/tvPricePerPerson"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{restaurant.cost}"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvRupeeSymbol"
+                app:layout_constraintStart_toEndOf="@+id/tvRupeeSymbol"
+                app:layout_constraintTop_toTopOf="@+id/tvRupeeSymbol"
+                tools:text="200" />
+
+            <TextView
+                android:id="@+id/imageButton"
+                style="?attr/textAppearanceHeadline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/circular_bg"
+                android:gravity="center"
+                android:text="@{restaurant.rating}"
+                app:layout_constraintBottom_toBottomOf="@+id/tvRupeeSymbol"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvResTitle" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
+
