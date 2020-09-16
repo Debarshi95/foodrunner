@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/restaurant_nav_graph"
+    app:startDestination="@id/restaurantFragment">
+
+    <fragment
+        android:id="@+id/restaurantFragment"
+        android:name="com.example.dev.foodrunner.ui.restaurants.RestaurantFragment"
+        android:label="fragment_restaurant"
+        tools:layout="@layout/fragment_restaurant" />
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.dev.foodrunner.ui.cart.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.dev.foodrunner.ui.favorites.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.dev.foodrunner.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/restaurantDishFragment"
+        android:name="com.example.dev.foodrunner.ui.restaurant_dish.RestaurantDishFragment"
+        android:label="fragment_restaurant_dish"
+        tools:layout="@layout/fragment_restaurant_dish" />
+    <fragment
+        android:id="@+id/orderHistoryFragment"
+        android:name="com.example.dev.foodrunner.ui.order_history.OrderHistoryFragment"
+        android:label="order_history_fragment"
+        tools:layout="@layout/order_history_fragment" />
+</navigation>
