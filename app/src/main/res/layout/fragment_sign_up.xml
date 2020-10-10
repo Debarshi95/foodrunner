@@ -3,182 +3,247 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dev.foodrunner.ui.sign_up.SignUpViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="@{viewModel.loading?View.GONE:View.VISIBLE}"
         tools:context=".ui.sign_up.SignUpFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_start"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
 
 
         <TextView
-            android:id="@+id/tvRegHeading"
+            android:id="@+id/sign_up_heading"
             style="?textAppearanceHeadline3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
             android:text="@string/sign_up"
-            app:layout_constraintBottom_toTopOf="@+id/tvRegMsg"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.16000003"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintTop_toTopOf="@id/guideline_top" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_sign_up_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1" />
 
         <TextView
-            android:id="@+id/tvRegMsg"
+            android:id="@+id/label_sign_up"
             style="?textAppearanceHeadline6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sign_up_to_start"
-            app:layout_constraintBottom_toTopOf="@+id/tlRegName"
-            app:layout_constraintStart_toStartOf="@+id/tvRegHeading"
-            app:layout_constraintTop_toBottomOf="@+id/tvRegHeading" />
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/guideline_sign_up_heading" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_sign_up_view_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.15" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_sign_up_view_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_sign_up_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.loading?View.GONE:View.VISIBLE}"
+            app:constraint_referenced_ids="sign_up_heading, label_sign_up,
+            tl_sign_up_name,tl_sign_up_email,tl_sign_up_mobile_no,
+            tl_sign_up_address,tl_sign_up_password,tl_sign_up_cnf_password,
+            btn_sign_up,tv_move_to_sign_in, label_already_registered" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tlRegName"
-            android:layout_width="match_parent"
+            android:id="@+id/tl_sign_up_name"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="20dp"
             android:hint="@string/hint_name"
-            app:layout_constraintBottom_toTopOf="@+id/tlRegEmail"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvRegMsg">
+            app:layout_constraintBottom_toTopOf="@+id/tl_sign_up_email"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/guideline_sign_up_view_top">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etRegName"
+                android:id="@+id/et_sign_up_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tlRegEmail"
-            android:layout_width="0dp"
+            android:id="@+id/tl_sign_up_email"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
             android:hint="@string/hint_email"
-            app:layout_constraintBottom_toTopOf="@+id/tlRegMobileNo"
-            app:layout_constraintEnd_toEndOf="@+id/tlRegName"
-            app:layout_constraintStart_toStartOf="@+id/tlRegName"
-            app:layout_constraintTop_toBottomOf="@+id/tlRegName">
+            app:layout_constraintBottom_toTopOf="@+id/tl_sign_up_mobile_no"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/tl_sign_up_name">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etRegEmail"
+                android:id="@+id/et_sign_up_email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tlRegMobileNo"
-            android:layout_width="0dp"
+            android:id="@+id/tl_sign_up_mobile_no"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
             android:hint="@string/hint_mobile_number"
-            app:layout_constraintBottom_toTopOf="@+id/tlRegAddress"
-            app:layout_constraintEnd_toEndOf="@+id/tlRegEmail"
-            app:layout_constraintStart_toStartOf="@+id/tlRegEmail"
-            app:layout_constraintTop_toBottomOf="@+id/tlRegEmail">
+            app:layout_constraintBottom_toTopOf="@+id/tl_sign_up_address"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/tl_sign_up_email">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etRegMobileNo"
+                android:id="@+id/et_reg_mobile_no"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tlRegAddress"
-            android:layout_width="0dp"
+            android:id="@+id/tl_sign_up_address"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
             android:hint="@string/hint_address"
-            app:layout_constraintBottom_toTopOf="@+id/tlRegPassword"
-            app:layout_constraintEnd_toEndOf="@+id/tlRegMobileNo"
-            app:layout_constraintStart_toStartOf="@+id/tlRegMobileNo"
-            app:layout_constraintTop_toBottomOf="@+id/tlRegMobileNo">
+            app:layout_constraintBottom_toTopOf="@+id/tl_sign_up_password"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/tl_sign_up_mobile_no">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etRegAddress"
+                android:id="@+id/et_sign_up_address"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tlRegPassword"
-            android:layout_width="0dp"
+            android:id="@+id/tl_sign_up_password"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
             android:hint="@string/hint_password"
             app:endIconMode="password_toggle"
-            app:layout_constraintBottom_toTopOf="@+id/tlRegCnfPassword"
-            app:layout_constraintEnd_toEndOf="@+id/tlRegAddress"
-            app:layout_constraintStart_toStartOf="@+id/tlRegAddress"
-            app:layout_constraintTop_toBottomOf="@+id/tlRegAddress">
+            app:layout_constraintBottom_toTopOf="@+id/tl_sign_up_cnf_password"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/tl_sign_up_address">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etRegPassword"
+                android:id="@+id/et_sign_up_password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tlRegCnfPassword"
-            android:layout_width="0dp"
+            android:id="@+id/tl_sign_up_cnf_password"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
             android:hint="@string/hint_confirm_password"
             app:endIconMode="password_toggle"
-            app:layout_constraintBottom_toTopOf="@+id/btnReg"
-            app:layout_constraintEnd_toEndOf="@+id/tlRegPassword"
-            app:layout_constraintStart_toStartOf="@+id/tlRegPassword"
-            app:layout_constraintTop_toBottomOf="@+id/tlRegPassword">
+            app:layout_constraintBottom_toTopOf="@+id/btn_sign_up"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/tl_sign_up_password">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etRegCnfPassword"
+                android:id="@+id/et_sign_up_cnf_password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btnReg"
-            android:layout_width="0dp"
+            android:id="@+id/btn_sign_up"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/sign_up"
-            app:layout_constraintBottom_toTopOf="@+id/signMsg"
-            app:layout_constraintEnd_toEndOf="@+id/tlRegCnfPassword"
-            app:layout_constraintStart_toStartOf="@+id/tlRegCnfPassword"
-            app:layout_constraintTop_toBottomOf="@+id/tlRegCnfPassword" />
+            app:layout_constraintBottom_toTopOf="@+id/guideline_sign_up_view_bottom"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/tl_sign_up_cnf_password" />
 
         <TextView
-            android:id="@+id/signMsg"
+            android:id="@+id/label_already_registered"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:text="@string/already_registered"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tvMoveToSignIn"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
+            app:layout_constraintEnd_toStartOf="@+id/tv_move_to_sign_in"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="@+id/btnReg"
-            app:layout_constraintTop_toBottomOf="@+id/btnReg" />
+            app:layout_constraintStart_toStartOf="@+id/guideline_start" />
 
         <TextView
-            android:id="@+id/tvMoveToSignIn"
+            android:id="@+id/tv_move_to_sign_in"
             style="?attr/textAppearanceHeadline5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
+            android:layout_marginStart="@dimen/dimen_3dp"
+            android:onClick="@{()->viewModel.setNavigateToSignInFragEvent()}"
             android:text="@string/sign_in"
-            app:layout_constraintBaseline_toBaselineOf="@+id/signMsg"
-            app:layout_constraintEnd_toEndOf="@+id/btnReg"
+            app:layout_constraintBaseline_toBaselineOf="@+id/label_already_registered"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_end"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/signMsg" />
+            app:layout_constraintStart_toEndOf="@+id/label_already_registered" />
 
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:visibility="@{viewModel.loading?View.VISIBLE:View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

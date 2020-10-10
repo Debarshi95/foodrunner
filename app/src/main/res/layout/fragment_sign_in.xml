@@ -4,117 +4,188 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.sign_in.SignInFragment">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dev.foodrunner.ui.sign_in.SignInViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/loginHeading"
-            style="?attr/textAppearanceHeadline3"
-            android:layout_width="0dp"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_top"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="50dp"
-            android:text="@string/sign_in"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_start"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_login_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.loading?View.GONE:View.VISIBLE}"
+            app:constraint_referenced_ids="tv_help_sign_up,label_login,
+            tl_mobile_number,tl_password,tv_help_forgot_password,
+            btn_login,tv_help_sign_up,label_create_account" />
 
         <TextView
-            android:id="@+id/loginMsg"
+            android:id="@+id/login_heading"
+            style="?attr/textAppearanceHeadline3"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_in"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintTop_toTopOf="@id/guideline_top" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_sign_in_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <TextView
+            android:id="@+id/label_login"
             style="?attr/textAppearanceHeadline6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/please_sign_in_to_continue"
-            app:layout_constraintStart_toStartOf="@+id/loginHeading"
-            app:layout_constraintTop_toBottomOf="@+id/loginHeading" />
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintTop_toTopOf="@id/guideline_sign_in_heading" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_sign_in_view_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.25" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_sign_in_view_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.75" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tlMobileNumber"
-            android:layout_width="0dp"
+            android:id="@+id/tl_mobile_number"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
             android:hint="@string/hint_mobile_number"
-            app:layout_constraintBottom_toTopOf="@+id/tlPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginMsg"
-            app:layout_constraintVertical_bias="0.25"
-            app:layout_constraintVertical_chainStyle="packed">
+            app:layout_constraintBottom_toTopOf="@+id/tl_password"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintTop_toTopOf="@id/guideline_sign_in_view_top"
+            app:layout_constraintVertical_chainStyle="spread">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etMobileNumber"
+                android:id="@+id/et_mobile_number"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
+                android:layout_height="match_parent"
+                android:inputType="number"
+                android:maxLength="10" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tlPassword"
-            android:layout_width="match_parent"
+            android:id="@+id/tl_password"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="32dp"
             android:hint="@string/hint_password"
             app:endIconMode="password_toggle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tv_help_forgot_password"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tlMobileNumber">
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/tl_mobile_number">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPassword"
+                android:id="@+id/et_password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/forgotPassword"
+            android:id="@+id/tv_help_forgot_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:onClick="@{()->viewModel.setNavigateToForgotPasswordFragEvent()}"
             android:text="@string/forgot_password"
-            app:layout_constraintEnd_toEndOf="@+id/tlPassword"
-            app:layout_constraintTop_toBottomOf="@+id/tlPassword" />
+            app:layout_constraintBottom_toTopOf="@id/btn_login"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_end"
+            app:layout_constraintTop_toBottomOf="@+id/tl_password" />
 
         <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="0dp"
+            android:id="@+id/btn_login"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:text="@string/sign_in"
-            app:layout_constraintEnd_toEndOf="@+id/tlPassword"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tlPassword"
-            app:layout_constraintTop_toBottomOf="@+id/forgotPassword" />
+            app:layout_constraintBottom_toBottomOf="@id/guideline_sign_in_view_bottom"
+            app:layout_constraintEnd_toEndOf="@+id/guideline_end"
+            app:layout_constraintStart_toStartOf="@+id/guideline_start"
+            app:layout_constraintTop_toBottomOf="@+id/tv_help_forgot_password" />
 
         <TextView
-            android:id="@+id/createAccountMsg"
+            android:id="@+id/label_create_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
             android:text="@string/don_t_have_an_account"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tvMoveToSignUp"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
+            app:layout_constraintEnd_toStartOf="@+id/tv_help_sign_up"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="@+id/tlPassword" />
+            app:layout_constraintStart_toStartOf="@id/guideline_start" />
 
         <TextView
-            android:id="@+id/tvMoveToSignUp"
+            android:id="@+id/tv_help_sign_up"
             style="?attr/textAppearanceHeadline5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
+            android:layout_marginStart="@dimen/dimen_3dp"
+            android:onClick="@{()->viewModel.setNavigateToSignUpFragEvent()}"
             android:text="@string/sign_up"
-            android:textAllCaps="false"
-            app:layout_constraintBaseline_toBaselineOf="@+id/createAccountMsg"
-            app:layout_constraintEnd_toEndOf="@+id/tlPassword"
+            app:layout_constraintBaseline_toBaselineOf="@+id/label_create_account"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_end"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/createAccountMsg" />
+            app:layout_constraintStart_toEndOf="@+id/label_create_account" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:visibility="@{viewModel.loading?View.VISIBLE:View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
+            app:layout_constraintEnd_toEndOf="@id/guideline_end"
+            app:layout_constraintStart_toStartOf="@id/guideline_start"
+            app:layout_constraintTop_toTopOf="@id/guideline_top" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
