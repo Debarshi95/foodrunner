@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.dev.foodrunner.ui.sign_in.SignInViewModel" />
+            type="com.example.dev.foodrunner.viewmodel.AuthViewModel" />
 
         <import type="android.view.View" />
     </data>
@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.05" />
+            app:layout_constraintGuide_percent="0.07" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_bottom"
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="@{viewModel.loading?View.GONE:View.VISIBLE}"
-            app:constraint_referenced_ids="tv_help_sign_up,label_login,
+            app:constraint_referenced_ids="login_heading,tv_help_sign_up,label_login,
             tl_mobile_number,tl_password,tv_help_forgot_password,
             btn_login,tv_help_sign_up,label_create_account" />
 
@@ -69,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.1" />
+            app:layout_constraintGuide_percent="0.13" />
 
         <TextView
             android:id="@+id/label_login"
@@ -85,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.25" />
+            app:layout_constraintGuide_percent="0.27" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_sign_in_view_bottom"
@@ -137,7 +137,7 @@
             android:id="@+id/tv_help_forgot_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{()->viewModel.setNavigateToForgotPasswordFragEvent()}"
+            android:onClick="@{()->viewModel.setNavigateToForgotPasswordFragment()}"
             android:text="@string/forgot_password"
             app:layout_constraintBottom_toTopOf="@id/btn_login"
             app:layout_constraintEnd_toEndOf="@+id/guideline_end"
@@ -170,7 +170,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_3dp"
-            android:onClick="@{()->viewModel.setNavigateToSignUpFragEvent()}"
+            android:onClick="@{()->viewModel.setNavigateToSignUpFragment()}"
             android:text="@string/sign_up"
             app:layout_constraintBaseline_toBaselineOf="@+id/label_create_account"
             app:layout_constraintEnd_toStartOf="@+id/guideline_end"

@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.dev.foodrunner.ui.sign_up.SignUpViewModel" />
+            type="com.example.dev.foodrunner.viewmodel.AuthViewModel" />
 
         <import type="android.view.View" />
     </data>
@@ -61,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.1" />
+            app:layout_constraintGuide_percent="0.11" />
 
         <TextView
             android:id="@+id/label_sign_up"
@@ -77,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.15" />
+            app:layout_constraintGuide_percent="0.18" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_sign_up_view_bottom"
@@ -228,7 +228,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_3dp"
-            android:onClick="@{()->viewModel.setNavigateToSignInFragEvent()}"
+            android:onClick="@{()->viewModel.setNavigateToSignInFragment()}"
             android:text="@string/sign_in"
             app:layout_constraintBaseline_toBaselineOf="@+id/label_already_registered"
             app:layout_constraintEnd_toEndOf="@+id/guideline_end"
