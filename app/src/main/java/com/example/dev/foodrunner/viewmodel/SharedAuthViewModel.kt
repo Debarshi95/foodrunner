@@ -109,7 +109,7 @@ class AuthViewModel @Inject constructor(private val repository: MainRepository) 
     private fun signUp(user: User) {
         _loading.value = true
         viewModelScope.launch {
-            handleResponse(repository.signIn(user))
+            handleResponse(repository.signUp(user))
         }
     }
 
@@ -158,7 +158,21 @@ class AuthViewModel @Inject constructor(private val repository: MainRepository) 
     private fun forgotPassword(user: User) {
         _loading.value = true
         viewModelScope.launch {
-            handleResponse(repository.forgotPassword(user))
+            when (val response = repository.forgotPassword(user)) {
+                is ResponseState.Success -> {
+                    _loading.value = false
+                    _navigateToResetPasswordFragment.value = Event(true)
+                }
+                is ResponseState.Error -> {
+                    _loading.value = false
+                    _responseSnackBar.value = Event(response.message)
+                }
+                is ResponseState.Exception -> {
+                    _loading.value = false
+                    _responseSnackBar.value = Event(response.exception.toString())
+                }
+                ResponseState.Loading -> _loading.value = true
+            }
         }
     }
 
